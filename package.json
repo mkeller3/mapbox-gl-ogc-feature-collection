@@ -1,10 +1,26 @@
 {
   "name": "mapbox-gl-ogc-feature-collection",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "A small package for requesting geojson from an OGC Feature API endpoint to serve tiles in MapBox/MapLibre.",
   "main": "dist/mapbox-gl-ogc-feature-collection.js",
+  "module": "dist/mapbox-gl-ogc-feature-collection.esm.js",
+  "browser": "dist/mapbox-gl-ogc-feature-collection.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "watch": "rollup -w -c"
+  },
+  "dependencies": {
+    "@mapbox/tilebelt": "^1.0.2"
+  },
+  "devDependencies": {
+    "rollup": "^2.79.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-node-resolve": "^14.1.0"
+  },
+  "repository": "github:mkeller3/mapbox-gl-ogc-feature-collection",
+  "bugs": {
+    "url": "https://github.com/mkeller3/mapbox-gl-ogc-feature-collection/issues"
   },
   "keywords": [
     "mapbox-gl-js",
