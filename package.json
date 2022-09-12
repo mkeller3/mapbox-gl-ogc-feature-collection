@@ -1,0 +1,19 @@
+{
+  "name": "mapbox-gl-ogc-feature-collection",
+  "version": "0.0.1",
+  "description": "A small package for requesting geojson from an OGC Feature API endpoint to serve tiles in MapBox/MapLibre.",
+  "main": "dist/mapbox-gl-ogc-feature-collection.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mapbox-gl-js",
+    "mapbox-gl",
+    "maplibre-gl-js",
+    "maplibre-gl",
+    "ogc",
+    "ogc-features"
+  ],
+  "author": "Michael Keller",
+  "license": "ISC"
+}
