@@ -5,6 +5,10 @@ A small package for requesting geojson from an OGC Feature API endpoint to serve
 
 Built with inspiration from [mapbox-gl-arcgis-featureserver](https://github.com/rowanwins/mapbox-gl-arcgis-featureserver).
 
+### Demo
+
+Check out the demo at [this link](https://mkeller3.github.io/mapbox-gl-ogc-feature-collection/)
+
 ### Basic Usage
 ````javascript
 import OGCFeatureCollection from 'mapbox-gl-ogc-feature-collection'
@@ -52,8 +56,6 @@ This library exposes a single `OGCFeatureCollection` class
 | `bbox` | `String` | | Apply bbox to items to only show in certain area. `-180,-90,180,90` |
 | `useStaticZoomLevel` | `Boolean` | `false` | Whether to only get tiles at a single zoom level. If true then set `minZoom` to the desired level. |
 | `minZoom` | `Number` | if `useStaticZoom` is `true` then `7`, otherwise `2` | The zoom level to start requesting tiles. |
-
-
 
 
 ### Methods
