@@ -8,8 +8,8 @@ Built with inspiration from [mapbox-gl-arcgis-featureserver](https://github.com/
 ### Demo
 
 Check out the demo at [this link](https://mkeller3.github.io/mapbox-gl-ogc-feature-collection/). This demo pulls
-in older data from a Covid 19 OGC Feature API collection at [https://demo.pygeoapi.io/covid-19](https://demo.pygeoapi.io/covid-19).
-In the demo, we are using the collection `cases_country`.
+in large lakes OGC Feature API collection at [https://demo.pygeoapi.io/stable](https://demo.pygeoapi.io/stable).
+In the demo, we are using the collection `lakes`.
 
 ![demo image](./images/demo.png)
 
@@ -21,17 +21,18 @@ map.on('load', () => {
     const sourceId = 'collection-src'
 
     new OGCFeatureCollection(sourceId, map, {
-        url: 'https://demo.pygeoapi.io/covid-19',
-        collectionId: 'cases_country',
+        url: 'https://demo.pygeoapi.io/stable',
+        collectionId: 'lakes',
         limit: 10000
     })
 
     map.addLayer({
         'id': 'lyr',
         'source': sourceId,
-        'type': 'circle',
+        'type': 'fill',
         'paint': {
-            'circle-color': '#B42222'
+            'fill-color': '#B42222',
+            'fill-opacity': 0.7
         }
     })
 })
@@ -80,17 +81,18 @@ map.on('load', () => {
     const lyrId = 'lyr'
 
     const service = new OGCFeatureCollection(sourceId, map, {
-        url: 'https://demo.pygeoapi.io/covid-19',
-        collectionId: 'cases_country',
+        url: 'https://demo.pygeoapi.io/stable',
+        collectionId: 'lakes',
         limit: 10000
     })
 
     map.addLayer({
-        'id': lyrId,
+        'id': 'lyr',
         'source': sourceId,
-        'type': 'circle',
+        'type': 'fill',
         'paint': {
-            'circle-color': '#B42222'
+            'fill-color': '#B42222',
+            'fill-opacity': 0.7
         }
     })
 })
