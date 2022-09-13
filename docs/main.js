@@ -1,4 +1,4 @@
-import tilebelt from '@mapbox/tilebelt'
+import tilebelt from './@mapbox/tilebelt/index.js'
 
 export default class OGCFeatureCollection {
     constructor(sourceId, map, collectionOptions, geojsonSourceOptions) {
