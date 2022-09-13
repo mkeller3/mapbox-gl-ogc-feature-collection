@@ -58,7 +58,6 @@ This library exposes a single `OGCFeatureCollection` class
 | `limit` | `Number` | `5000` | Number of features to return in each tile. |
 | `properties` | `String` | | List of properties to return for each feature. |
 | `datetime` | `Date` | | Date or date range to filter items. |
-| `bbox` | `String` | | Apply bbox to items to only show in certain area. `-180,-90,180,90` |
 | `useStaticZoomLevel` | `Boolean` | `false` | Whether to only get tiles at a single zoom level. If true then set `minZoom` to the desired level. |
 | `minZoom` | `Number` | if `useStaticZoom` is `true` then `7`, otherwise `2` | The zoom level to start requesting tiles. |
 
