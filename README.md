@@ -9,12 +9,14 @@ Built with inspiration from [mapbox-gl-arcgis-featureserver](https://github.com/
 
 Check out the demo at [this link](https://mkeller3.github.io/mapbox-gl-ogc-feature-collection/).
 
+![demo image](./images/demo.png)
+
 ### Basic Usage
 ````javascript
 import OGCFeatureCollection from 'mapbox-gl-ogc-feature-collection'
 
 map.on('load', () => {
-    const sourceId = 'featureserver-src'
+    const sourceId = 'collection-src'
 
     new OGCFeatureCollection(sourceId, map, {
         url: 'https://demo.pygeoapi.io/covid-19',
@@ -23,7 +25,7 @@ map.on('load', () => {
     })
 
     map.addLayer({
-        'id': 'fill-lyr',
+        'id': 'lyr',
         'source': sourceId,
         'type': 'circle',
         'paint': {
@@ -72,8 +74,8 @@ It would be nice if disabling/enabling of requests happened automatically but un
 import OGCFeatureCollection from 'mapbox-gl-ogc-feature-collection'
 
 map.on('load', () => {
-    const sourceId = 'featureserver-src'
-    const fsLyrId = 'fs-fill-lyr'
+    const sourceId = 'collection-src'
+    const lyrId = 'lyr'
 
     const service = new OGCFeatureCollection(sourceId, map, {
         url: 'https://demo.pygeoapi.io/covid-19',
@@ -82,7 +84,7 @@ map.on('load', () => {
     })
 
     map.addLayer({
-        'id': fsLyrId,
+        'id': lyrId,
         'source': sourceId,
         'type': 'circle',
         'paint': {
@@ -93,15 +95,15 @@ map.on('load', () => {
     
     
 function hideFsLayer () {
-    map.setLayoutProperty(fsLyrId, 'visibility', 'none')
+    map.setLayoutProperty(lyrId, 'visibility', 'none')
     service.disableRequests()
 }
 function showFsLayer () {
-    map.setLayoutProperty(fsLyrId, 'visibility', 'visible')
+    map.setLayoutProperty(lyrId, 'visibility', 'visible')
     service.enableRequests()
 }
 function removeFsCompletelyFromMap () {
-    map.removeLayer(fsLyrId)
+    map.removeLayer(lyrId)
     service.destroySource()
 }
 ````
