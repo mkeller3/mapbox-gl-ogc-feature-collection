@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>mapbox-gl-ogc-feature-collection</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+        <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+        <script src="https://unpkg.com/vue@3"></script>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+    
+            #map {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 100%;
+            }
+        </style>
+    </head>
+    
+<body>
+<div id="app"><div id="map"></div></div>
+</body>
+<script type="module">
+    import OGCFeatureCollection from './main.js'
+    const { createApp } = Vue
+
+    createApp({
+        mounted(){
+            const map = new maplibregl.Map({
+                container: 'map',
+                style: {
+                    'version': 8,
+                    'sources': {
+                        'raster-tiles': {
+                            'type': 'raster',
+                            'tiles': [
+                                'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+                            ],
+                            'tileSize': 256,
+                            'attribution': '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        }
+                    },
+                    'layers': [{
+                        'id': 'simple-tiles',
+                        'type': 'raster',
+                        'source': 'raster-tiles',
+                        'minzoom': 0,
+                        'maxzoom': 22
+                    }]
+                },
+                center: [-95, 40],
+                zoom: 3
+            });
+
+            map.addControl(new maplibregl.NavigationControl())
+
+            map.on('load', () => {
+
+                const sourceId = 'featureserver-src'
+
+                new OGCFeatureCollection(sourceId, map, {
+                    url: 'https://demo.pygeoapi.io/covid-19',
+                    collectionId: 'cases_country',
+                    limit: 10000
+                })
+
+                map.addLayer({
+                    'id': 'lyr',
+                    'source': sourceId,
+                    'type': 'circle',
+                    'paint': {
+                        'circle-color': '#B42222'
+                    }
+                })
+            })
+        }
+
+    }).mount('#app')
+</script>
+<!-- 
+<head>
+    <meta charset="utf-8" />
+    <title>mapbox-gl-ogc-feature-collection</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/mapbox-gl-ogc-feature-collection@0.0.1/dist/mapbox-gl-ogc-feature-collection.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script type="module">
+
+        const map = new maplibregl.Map({
+            container: 'map',
+            style: {
+                'version': 8,
+                'sources': {
+                    'raster-tiles': {
+                        'type': 'raster',
+                        'tiles': [
+                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+                        ],
+                        'tileSize': 256,
+                        'attribution': '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }
+                },
+                'layers': [{
+                    'id': 'simple-tiles',
+                    'type': 'raster',
+                    'source': 'raster-tiles',
+                    'minzoom': 0,
+                    'maxzoom': 22
+                }]
+            },
+            center: [-95, 40],
+            zoom: 3
+        });
+
+        map.addControl(new maplibregl.NavigationControl())
+
+        map.on('load', () => {
+
+            const fsSourceId = 'featureserver-src'
+
+            new OGCFeatureCollection(fsSourceId, map, {
+                url: 'http://127.0.0.1:8000/api/v1/',
+                collectionId: 'data.public.counties',
+                limit: 100
+            })
+
+            map.addLayer({
+                'id': 'fill-lyr',
+                'source': fsSourceId,
+                'type': 'fill',
+                'paint': {
+                    'fill-color': '#B42222',
+                    'fill-opacity': 0.7
+                }
+            })
+        })
+    </script>
+
+</body> -->
+
+</html>

@@ -10,9 +10,9 @@ Built with inspiration from [mapbox-gl-arcgis-featureserver](https://github.com/
 import OGCFeatureCollection from 'mapbox-gl-ogc-feature-collection'
 
 map.on('load', () => {
-    const fsSourceId = 'featureserver-src'
+    const sourceId = 'featureserver-src'
 
-    new OGCFeatureCollection(fsSourceId, map, {
+    new OGCFeatureCollection(sourceId, map, {
         url: 'https://demo.pygeoapi.io/covid-19',
         collectionId: 'cases_country',
         limit: 10000
@@ -20,7 +20,7 @@ map.on('load', () => {
 
     map.addLayer({
         'id': 'fill-lyr',
-        'source': fsSourceId,
+        'source': sourceId,
         'type': 'circle',
         'paint': {
             'circle-color': '#B42222'
@@ -70,10 +70,10 @@ It would be nice if disabling/enabling of requests happened automatically but un
 import OGCFeatureCollection from 'mapbox-gl-ogc-feature-collection'
 
 map.on('load', () => {
-    const fsSourceId = 'featureserver-src'
+    const sourceId = 'featureserver-src'
     const fsLyrId = 'fs-fill-lyr'
 
-    const service = new OGCFeatureCollection(fsSourceId, map, {
+    const service = new OGCFeatureCollection(sourceId, map, {
         url: 'https://demo.pygeoapi.io/covid-19',
         collectionId: 'cases_country',
         limit: 10000
@@ -81,7 +81,7 @@ map.on('load', () => {
 
     map.addLayer({
         'id': fsLyrId,
-        'source': fsSourceId,
+        'source': sourceId,
         'type': 'circle',
         'paint': {
             'circle-color': '#B42222'
