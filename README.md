@@ -7,7 +7,7 @@ Built with inspiration from [mapbox-gl-arcgis-featureserver](https://github.com/
 
 ### Demo
 
-Check out the demo at [this link](https://mkeller3.github.io/mapbox-gl-ogc-feature-collection/)
+Check out the demo at [this link](https://mkeller3.github.io/mapbox-gl-ogc-feature-collection/).
 
 ### Basic Usage
 ````javascript
