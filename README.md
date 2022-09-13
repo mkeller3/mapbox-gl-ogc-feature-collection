@@ -7,7 +7,9 @@ Built with inspiration from [mapbox-gl-arcgis-featureserver](https://github.com/
 
 ### Demo
 
-Check out the demo at [this link](https://mkeller3.github.io/mapbox-gl-ogc-feature-collection/).
+Check out the demo at [this link](https://mkeller3.github.io/mapbox-gl-ogc-feature-collection/). This demo pulls
+in older data from a Covid 19 OGC Feature API collection at [https://demo.pygeoapi.io/covid-19](https://demo.pygeoapi.io/covid-19).
+In the demo, we are using the collection `cases_country`.
 
 ![demo image](./images/demo.png)
 

@@ -170,7 +170,7 @@ export default class OGCFeatureCollection {
         let urlParams = `limit=${this._collectionServiceOptions.limit}&bbox=${tileBounds[0]},${tileBounds[1]},${tileBounds[2]},${tileBounds[3]}`
 
         return new Promise((resolve) => {
-            fetch(`${`${this._collectionServiceOptions.url}collections/${this._collectionServiceOptions.collectionId}/items?${urlParams}`}`, this._collectionServiceOptions.fetchOptions)
+            fetch(`${`${this._collectionServiceOptions.url}/collections/${this._collectionServiceOptions.collectionId}/items?${urlParams}`}`, this._collectionServiceOptions.fetchOptions)
                 .then(response => (response.json()))
                 .then((data) => {
                     resolve(data)
