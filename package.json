@@ -1,6 +1,6 @@
 {
   "name": "mapbox-gl-ogc-feature-collection",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A small package for requesting geojson from an OGC Feature API endpoint to serve tiles in MapBox/MapLibre.",
   "main": "dist/mapbox-gl-ogc-feature-collection.js",
   "module": "dist/mapbox-gl-ogc-feature-collection.esm.js",

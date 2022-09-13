@@ -169,6 +169,14 @@ export default class OGCFeatureCollection {
 
         let urlParams = `limit=${this._collectionServiceOptions.limit}&bbox=${tileBounds[0]},${tileBounds[1]},${tileBounds[2]},${tileBounds[3]}`
 
+        let blacklist_parameters = ['limit','url','useStaticZoomLevel','collectionId','minZoom']
+
+        for(let option in this._collectionServiceOptions){
+            if (! blacklist_parameters.includes(option)){
+                urlParams += `&${option}=${this._collectionServiceOptions[option]}`
+            }
+        }
+
         return new Promise((resolve) => {
             fetch(`${`${this._collectionServiceOptions.url}/collections/${this._collectionServiceOptions.collectionId}/items?${urlParams}`}`, this._collectionServiceOptions.fetchOptions)
                 .then(response => (response.json()))
